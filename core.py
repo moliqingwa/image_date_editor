@@ -16,6 +16,7 @@ import ocr_helper
 DATE_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"  # 时间格式
 
 RE_DATE_TIME = re.compile("^(?P<date>\d{4}-\d{2}-\d{2})\s+(?P<hour>[01]?[0-9]|2[0-3])\s?:\s?(?P<minute>[0-5][0-9])\s?:\s?(?P<second>[0-5][0-9])$")
+RE_DATE_TIME_DIM = re.compile("^(?P<date>\d{4}-\d{2}-\d{2})[\s\W]+(?P<hour>[01]?[0-9]|2[0-3])\s?[:|]\s?(?P<minute>[0-5][0-9])\s?[:|]\s?(?P<second>[0-5][0-9])$")
 
 
 def time_offset_and_struct(times, format, offset):
@@ -54,7 +55,7 @@ def get_datetime_text(image_array):
     text_infos.sort(key=lambda x: tuple(x[0][0].tolist()))  # 先按x升序,再按y升序
     target_pts, target_text = None, None
     for pts, text, conf in text_infos:
-        m = RE_DATE_TIME.match(text)
+        m = RE_DATE_TIME_DIM.match(text)  # 模糊匹配
         if m:
             target_pts, target_text = pts, f"{m.group('date')} {m.group('hour')}:{m.group('minute')}:{m.group('second')}"
             break
