@@ -1,0 +1,7 @@
+**/*.log
+.idea/
+dist/
+*.iml
+*.png
+*.jpg
+**/__pycache__/
