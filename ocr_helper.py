@@ -3,20 +3,20 @@ import os
 import sys
 from pathlib import Path
 
-import cv2
+# import cv2
 import numpy as np
 from paddleocr import paddleocr
-from paddleocr.paddleocr import (BASE_DIR, SUPPORT_DET_MODEL,
-                                 SUPPORT_OCR_MODEL_VERSION, SUPPORT_REC_MODEL,
-                                 alpha_to_color, binarize_img, check_gpu,
-                                 check_img, confirm_model_dir_url,
-                                 get_model_config, logger, maybe_download,
-                                 parse_args, parse_lang, predict_system)
+# from paddleocr.paddleocr import (BASE_DIR, SUPPORT_DET_MODEL,
+#                                  SUPPORT_OCR_MODEL_VERSION, SUPPORT_REC_MODEL,
+#                                  alpha_to_color, binarize_img, check_gpu,
+#                                  check_img, confirm_model_dir_url,
+#                                  get_model_config, logger, maybe_download,
+#                                  parse_args, parse_lang, predict_system)
 from paddleocr import PaddleOCR as RawPaddleOCR
 
 import easyocr
 
-
+'''
 class PaddleOCR(predict_system.TextSystem):
     def __init__(self, **kwargs):
         """
@@ -157,6 +157,7 @@ class PaddleOCR(predict_system.TextSystem):
             if not rec:
                 return cls_res
             return ocr_res
+'''
 
 
 class EasyOCR:
